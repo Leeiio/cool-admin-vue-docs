@@ -42,7 +42,7 @@
 | 参数      | 说明                       | 类型                                          | 可选值 | 默认值             |
 | --------- | -------------------------- | --------------------------------------------- | ------ | ------------------ |
 | onConfig  | 配置项，返回 ClForm.Item[] | function                                      |        |                    |
-| onSubmit  | 提交事件，                 | ({...data, list}, {done, close, setProgress}) |        |                    |
+| onSubmit  | 提交事件，                 | ({...data, list}, {done, close}) |        |                    |
 | template  | 导入模板 URL               | string                                        |        |                    |
 | tips      | 提示                       | string                                        |        | 请按照模版填写信息 |
 | limitSize | 导入的文件大小             | number                                        |        | 10                 |
@@ -83,7 +83,7 @@
   }
 
   // 提交事件，根据自己的情况设置格式和接口
-  function onSubmit(data: any, { next, done, setProgress }) {
+  function onSubmit(data: any, { done, close }) {
     service.test
       .add(data)
       .then(() => {
